@@ -1,0 +1,24 @@
+Assuming you downloaded the package I exported (you're welcome). you may wanna follow this shit for it to work:
+
+
+
+	Make layers:
+	3 = Ground
+	6 = Portal
+	7 = PickableObject
+	8 = wallLayer
+
+
+	Then, in your PlayerController script, disable Flip().
+	
+
+	Pickable object should have two box colliders with the other one having is trigger set to true.
+
+	Pickable object should have the tag "Box" and layer "PickableObject".
+
+	
+	Blue portal should have the tag "BluePortal" and layer "Portal".
+	Orange portal should have the tag "Orange" and layer "Portal".
+
+	
+	Walls should have the tag "Wall"
