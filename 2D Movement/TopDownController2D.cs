@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class TopDownController2D : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveX;
