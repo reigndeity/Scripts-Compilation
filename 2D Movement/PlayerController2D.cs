@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
 {
-    public float horizontal;
-    public float speed = 5f;
-    public float jumpingPower = 5f;
     public Rigidbody2D rb;
+    public float moveX;
+    public float moveSpeed;
     public bool isFacingRight;
-
-    public bool isGrounded;
     public LayerMask groundMask;
+    public float jumpingPower;
+    public bool isGrounded;
+    
 
-    public void Start()
+    public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -26,7 +27,7 @@ public class PlayerController2D : MonoBehaviour
 
     private void CharacterMovement()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        moveX = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -43,12 +44,12 @@ public class PlayerController2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
     }
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if (isFacingRight && moveX < 0f || !isFacingRight && moveSpeed > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector2 localScale = transform.localScale;
@@ -56,6 +57,4 @@ public class PlayerController2D : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-
-
 }
